@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>WikiViewer</title>
+		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body ng-app="wikiSearch">
+	  <div ng-controller="searchCtrl as search" class="container container-fluid text-center">
+	  	<form ng-submit="search.submit(search.input)" class="form-inline">
+		  	<input ng-model="search.input" type="text" class="form-control" id="searchbox" placeholder="Query" />
+			  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			</form>
+			{{search.input}}
+	  </div>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	  <script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
