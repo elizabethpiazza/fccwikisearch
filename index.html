@@ -5,14 +5,20 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body ng-app="wikiSearch">
-	  <div ng-controller="searchCtrl as search" class="container container-fluid text-center">
-	  	<form ng-submit="search.submit(search.input)" class="form-inline">
-		  	<input ng-model="search.input" type="text" class="form-control" id="searchbox" placeholder="Query" />
+	  <div ng-controller="searchCtrl" class="container container-fluid text-center">
+	  	<form ng-submit="submit(input)" class="form-inline">
+		  	<input ng-model="input" type="text" class="form-control" id="searchbox" placeholder="Query" />
 			  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 			</form>
-			{{search.input}}
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="result in response">
+					<h3><a href="{{result.url}}" target="_blank">{{result.title}}</a></h3>
+					<p ng-bind-html="result.snippit"></p>
+				</li>
+			</ul>
 	  </div>
 	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.min.js"></script>
 	  <script type="text/javascript" src="app.js"></script>
 	</body>
 </html>
