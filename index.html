@@ -3,19 +3,23 @@
 		<title>WikiViewer</title>
 		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<base target="_blank">
 	</head>
 	<body ng-app="wikiSearch">
 	  <div ng-controller="searchCtrl" class="container container-fluid text-center">
 	  	<form ng-submit="submit(input)" class="form-inline">
 		  	<input ng-model="input" type="text" class="form-control" id="searchbox" placeholder="Query" />
 			  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				<a class="btn btn-primary" href="https://en.wikipedia.org/wiki/Special:Random"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
 			</form>
-			<ul class="list-group">
-				<li class="list-group-item" ng-repeat="result in response">
-					<h3><a href="{{result.url}}" target="_blank">{{result.title}}</a></h3>
-					<p ng-bind-html="result.snippit"></p>
-				</li>
-			</ul>
+			<div>
+				<ul class="list-group">
+					<a class="list-group-item" ng-repeat="result in response" ng-href="{{result.url}}">
+						<h3>{{result.title}}</h3>
+						<p ng-bind-html="result.snippit"></p>
+					</a>
+				</ul>
+			</div>
 	  </div>
 	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 	  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.min.js"></script>
